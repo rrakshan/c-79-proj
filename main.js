@@ -1,20 +1,35 @@
-var images = ["D:\WhatsApp Image 2022-02-02 at 5.15.03 PM.jpeg","D:\20210524_211924.jpg", "D:\20210524_144345.jpg" , "D:\IMG-20210524-WA0001.jpg", "D:\IMG-20210317-WA0006.jpg"];
-var names = ["Family Book","D.Ramesh", "K.Vishaka Priya", "R.Rakshan", "R.Krithik"];
-var i = 0;
-function update()
-{
-    i++;
-    var numbers_of_family_member_in_array = 4
-    if(i > numbers_of_family_member_in_array)
-      {
-          i = 0;
-      }
+menu_list_array = ["Veg Margherita Pizza",
+                        "Chicken Tandoori Pizza",
+                        "Veg Supreme Pizza",
+                        "Paneer Tikka Pizza",
+                        "Deluxe Veggie Pizza",
+                        "Veg Extravaganza Pizza",];
     
-    //Debug the code to store list of images in updatedImage. Use images[i]
-    var updatedImage = [images[i]];
-    //Debug the code to store list of names in updatedName. Use names[i]
-    var updatedName = [names[i]] ;
- 
-    document.getElementById("family_member_image").src = updatedImage;
-    document.getElementById("family_member_name").innerHTML = updatedName;
+    function getmenu(){
+        var htmldata="";
+        menu_list_array.sort();
+        for(var i=0;i<menu_list_array.length;i++){
+            htmldata=htmldata+ menu_list_array[i] + '<br>'
+        }
+        document.getElementById("display_menu").innerHTML = htmldata;
+        //give the appropriate id name as display_menu 
+    }
+
+    function add_item(){
+        var htmldata;
+		var imgtags='<img id="im1" src="pizzaImg.png">'
+        var item=document.getElementById("add_item").value;
+        // use the sort function as - menu_list_array.sort();
+        htmldata="";
+        for(var i=0;i<menu_list_array.length;i++){
+            htmldata=htmldata+imgtags+ menu_list_array[i]+'<br>';
+        }
+         document.getElementById("display_addedmenu").innerHTML = htmldata;
+		
+    }
+
+function add_top(){
+	var item=document.getElementById("add_item").value;
+    menu_list_array.push(item);
+	add_item();
 }
